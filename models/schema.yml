@@ -15,3 +15,120 @@ sources:
             description: identificador de usuarios
             tests:
               - not_null
+      - name: notifications
+        identifier: notifications
+        description: Una tabla de notificaciones que ha recibido un usuario
+        columns:
+          - name: reason
+            description: cadena que indica el propósito de la notificación
+            tests:
+              - not_null
+          - name: channel
+            description: cadena que indica cómo se ha notificado al usuario
+            tests:
+              - not_null
+          - name: status
+            description: cadena que indica el estado de la notificación
+            tests:
+              - not_null
+          - name: user_id
+            description: cadena que identifica de forma única al usuario
+            tests:
+              - not_null
+          - name: created_date
+            description: fecha y hora que indica cuándo se envió la notificación
+            tests:
+              - not_null
+      - name: transactions
+        identifier: transactions
+        description: Una tabla con transacciones que realizó un usuario
+        columns:
+          - name: transaction_id
+            description: cadena que identifica de forma única la transacción
+            tests:
+              - not_null
+          - name: transactions_type
+            description: cadena que indica el tipo de transacción
+            tests:
+              - not_null
+              - unique
+          - name: transactions_currency
+            description: cadena que indica la moneda de la transacción
+            tests:
+              - not_null
+          - name: amount_usd
+            description: float correspondiente al importe de la transacción en USD
+            tests:
+              - not_null
+          - name: transactions_state
+            description: cadena que indica el estado de una transacción - COMPLETADO - la transacción se completó y se modificó el saldo del usuario / RECHAZADO/FALLIDO. la transacción fue rechazada por algún motivo, generalmente se refiere a saldo insuficiente / REVERTIDO. la transacción asociada se completó primero, pero luego se revirtió. Más adelante, posiblemente debido a que el cliente se comunicó con el neobanco.
+            tests: 
+              - not_null
+          - name: ea_cardholderpresence
+            description: cadena que indica si el titular de la tarjeta estaba presente cuando se realizó la transacción sucedió
+          - name: ea_merchant_mcc
+            description:  flotante correspondiente al Código de Categoría de Comerciante (MCC)
+          - name: ea_merchant_city
+            description: cadena correspondiente a la ciudad del comerciante
+          - name: ea_merchant_country
+            description: cadena correspondiente al país del comerciante
+          - name: direction
+            description: adena que indica la dirección de la transacción
+            tests: 
+              - not_null
+          - name: user_id
+            description: cadena que identifica de forma única al usuario
+            tests:
+              - not_null
+          - name: created_date
+            description: fecha y hora correspondiente a la fecha de creación de la transacción
+            tests:
+              - not_null
+      - name: users
+        identifier: users
+        description: Una tabla de datos de usuario
+        columns:
+          - name: user_id
+            description: cadena que identifica de forma única al usuario
+            tests:
+              - not_null
+          - name: birth_year
+            description: entero correspondiente al año de nacimiento del usuario
+            tests:
+              - not_null
+          - name: country
+            description: cadena de dos letras correspondiente al país de residencia del usuario
+            tests: 
+              - not_null
+          - name: city
+            description: dos cadenas correspondientes a la ciudad de residencia del usuario
+            tests:
+              - not_null
+          - name: created_date
+            description: fecha y hora correspondiente a la fecha de creación del usuario
+            tests:
+              - not_null
+          - name: user_settings_crypto_unlocked
+            description: ntero que indica si el usuario ha desbloqueado la criptografía monedas en la aplicación
+            tests:
+              - not_null
+          - name: plan
+            description: cadena que indica en qué plan se encuentra el usuario
+            tests:
+              - not_null
+          - name: attributes_notifications_marketing_push
+            description: flotante que indica si el usuario ha aceptado recibir notificaciones push de marketing
+          - name: attributes_notifications_marketing_email
+            description: flotante que indica si el usuario ha aceptado recibir notificaciones de marketing por correo electrónico
+          - name: num_contacts
+            description: entero correspondiente al número de contactos que tiene el usuario en neo bank
+            tests:
+              - not_null
+          - name: num_referrals
+            description: entero correspondiente al número de usuarios referidos por el usuario seleccionado
+            tests:
+              - not_null
+          - name: num_successful_referrals
+            description: entero correspondiente al número de usuarios que han realizado las referencias correctamente referido por el usuario seleccionado (con éxito significa usuarios que realmente han instalado la aplicación y pueden usar el producto)
+            tests:
+              - not_null
