@@ -1,0 +1,17 @@
+version: 2
+sources:
+  - name: neobank
+    schema: neo_bank    # reemplaza esto por el nombre real del esquema/dataset
+    tables:
+      - name: devices
+        identifier: devices
+        description: la tabla conforma el nombre de la marca del dispositivo del usuario y el id
+        columns:
+          - name: string_field_0
+            description: nombre de la marca del dispositivo
+            tests:
+              - not_null
+          - name: string_field_1
+            description: identificador de usuarios
+            tests:
+              - not_null
