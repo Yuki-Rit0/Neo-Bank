@@ -51,7 +51,6 @@ sources:
             description: cadena que indica el tipo de transacción
             tests:
               - not_null
-              - unique
           - name: transactions_currency
             description: cadena que indica la moneda de la transacción
             tests:
